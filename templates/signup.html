@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}
+Sign up
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="container login-container">
+        <div class="row">
+
+            <div class="col-md-6 login-form-1">
+                <h3>Teacher</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Mobile Number" value="" />
+                    </div>
+                    <div class="button_login">
+                        <input type="submit" class="btnSubmit" value="Login" />
+                    </div>
+                    
+                </form>
+            </div>
+
+            <div class="col-md-6 login-form-2">
+                <h3>Student</h3>
+                <form method="POST" action="{% url 'student:sign_up' %}">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="user_name" placeholder="Username" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Email" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="mobile_number" placeholder="Mobile Number" value="" />
+                    </div>
+                    <div class="button_login">
+                        <input type="submit" class="btnSubmit" value="Login" />
+                    </div>
+                    
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock %}

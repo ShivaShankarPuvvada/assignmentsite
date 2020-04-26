@@ -27,6 +27,11 @@ router.register(r'jobs', views.JobViewSet)
 
 urlpatterns = [
     path('', i_views.index, name='index'),
+    path('about/', i_views.about, name='about'),
+    path("signup", StudentCreate.as_view(), name="sign_up"),
+    path("login",StudentLogin.as_view(),name="login"),
+
+
     # path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
