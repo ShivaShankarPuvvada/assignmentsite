@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block main_content %}
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h1 class="display-4 py-2 text-truncate">New Project</h1>
+                    <div class="px-2">
+                        <form action="#" method="POST" class="justify-content-center">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" placeholder="Projct name">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

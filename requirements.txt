@@ -13,3 +13,6 @@ pytz==2019.3
 sqlparse==0.3.0
 whitenoise==5.0.1
 wincertstore==0.2
+django-cors-middleware==1.4.0
+django-extensions==2.2.5
+six==1.13.0

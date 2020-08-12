@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block main_content %}
+
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <div class="px-2">
+                        <form action="" method="POST" class="justify-content-center">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input name="from_date" type="date" class="form-control" data-toggle="tooltip" data-placement="right" title="From Date">
+                            </div>
+                            <div class="form-group">
+                                <input name="to_date" type="date" class="form-control" data-toggle="tooltip" data-placement="right" title="To Date">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+
+{% for task in all_tasks %}
+
+
+        <div class="row">
+            <div class="col-sm-12">
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="mr-auto p-2">
+                            <h4 data-toggle="tooltip" data-placement="right" title="Task Name">{{ task.name }}</h4>
+                            <span style="font-size: .3erm;" data-toggle="tooltip" data-placement="right" title="Project Name">{{ task.project.name }}</span>
+                        </div>
+                        <div class="p-2" style="padding-top: 2.5% !important;"><span id="days{{task.id}}"></span> : <span id="hours{{task.id}}"></span> : <span id="minutes{{task.id}}"></span> : <span id="seconds{{task.id}}"></span></div>
+                      </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+      
+          
+       
+          
+     
+    
+
+
+
+<script>
+    function makeTimer{{task.id}}() {
+       var endTime{{task.id}}=new Date({{ task.end_time|date:"U" }} * 1000);
+        endTime{{task.id}} = (Date.parse(endTime{{task.id}}) / 1000);
+    
+            var now{{task.id}} = new Date();
+            now{{task.id}} = (Date.parse(now{{task.id}}) / 1000);
+    
+            var timeLeft{{task.id}} = endTime{{task.id}} - now{{task.id}};
+    
+            var days{{task.id}} = Math.floor(timeLeft{{task.id}} / 86400);
+            var hours{{task.id}} = Math.floor((timeLeft{{task.id}} - (days{{task.id}} * 86400)) / 3600);
+            var minutes{{task.id}} = Math.floor((timeLeft{{task.id}} - (days{{task.id}} * 86400) - (hours{{task.id}} * 3600 )) / 60);
+            var seconds{{task.id}} = Math.floor((timeLeft{{task.id}} - (days{{task.id}} * 86400) - (hours{{task.id}} * 3600) - (minutes{{task.id}} * 60)));
+    
+            if (hours{{task.id}} < "10") { hours{{task.id}} = "0" + hours{{task.id}}; }
+            if (minutes{{task.id}} < "10") { minutes{{task.id}} = "0" + minutes{{task.id}}; }
+            if (seconds{{task.id}} < "10") { seconds{{task.id}} = "0" + seconds{{task.id}}; }
+    
+            if ((days{{task.id}} >= 0) && (hours{{task.id}} >= 0) && (minutes{{task.id}} >=0) && (seconds{{task.id}} >= 0)){
+                $("#days{{task.id}}").html(days{{task.id}} + "");
+                $("#hours{{task.id}}").html(hours{{task.id}} + "");
+                $("#minutes{{task.id}}").html(minutes{{task.id}} + "");
+                $("#seconds{{task.id}}").html(seconds{{task.id}} + "");
+            }
+            else{
+                $("#days{{task.id}}").html(0 + "");
+                $("#hours{{task.id}}").html(0 + "");
+                $("#minutes{{task.id}}").html(0 + "");
+                $("#seconds{{task.id}}").html(0 + "");
+            }
+    
+    }
+    
+    setInterval(function() { makeTimer{{task.id}}(); }, 1000);
+    </script>
+{% endfor %}
+</div>
+
+
+{% endblock %}

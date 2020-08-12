@@ -1,1 +1,1 @@
-web: gunicorn implementai.wsgi --log-file -
+web: gunicorn legendables.wsgi --log-file -
