@@ -10,3 +10,7 @@ class Consumer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return str(self.email)
+
+class Employe(models.Model):
+    name = models.CharField(max_length=100,null=True)
+    age = models.PositiveSmallIntegerField()

@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import Docs
+from .views import Docs, inde
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('tasks/', include('tasks.urls')),
     path('docs/<str:jwt_token>', Docs.as_view(), name='docs'),
+    path('new/', inde, name='inde'),
 ]

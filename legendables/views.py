@@ -19,3 +19,7 @@ class Docs(APIView):
             return render(request,'docs.html', {'jwt_token': jwt_token})
         except Exception as error:
             return Response(json.dumps({'Message':traceback.format_exc()}),status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+def inde(request):
+    return render(request, 'inde.html')
