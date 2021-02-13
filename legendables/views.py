@@ -51,12 +51,12 @@ def inde(request):
 
         writer.save()
         excel = open("name_age.xlsx", "rb")
-        output = s_tio(excel.read())
-        out_content = output.getvalue()
-        output.close()
+        # output = s_tio(excel.read())
+        # out_content = output.getvalue()
+        # output.close()
 
 
-        response = HttpResponse(out_content,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response = HttpResponse(excel,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = 'attachment; filename=name_age.xlsx'
 
         return response
