@@ -1,12 +1,19 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-
+from accounts.models import Employe
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework import status
 import jwt
 from .auth import authrize_user
 import json
 import traceback
+
+import pandas as pd
+
+from datetime import date
+today = date.today()
+d1 = today.strftime("%d/%m/%Y")
 
 
 class Docs(APIView):
@@ -22,4 +29,34 @@ class Docs(APIView):
 
 
 def inde(request):
+    if request.method == 'POST':
+        e = Employe.objects.all()
+        names = []
+        ages = []
+        dates = []
+        for i in e:
+            names.append(i.name)
+            ages.append(i.age)
+            dates.append(d1)
+
+        df1 = pd.DataFrame({"Name": names, "Date": dates})
+        df2 = pd.DataFrame({"Age": ages, "Date": dates})
+        
+        writer = pd.ExcelWriter('name_age.xlsx', engine='xlsxwriter')
+
+        df1.to_excel(writer, index=False, sheet_name="Names")
+        df2.to_excel(writer, index=False, sheet_name="Ages")
+
+        writer.save()
+        excel = open("name_age.xlsx", "rb")
+        output = StringIO.StringIO(excel.read())
+        out_content = output.getvalue()
+        output.close()
+
+
+        response = HttpResponse(out_content,content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename=name_age.xlsx'
+
+        return response
+
     return render(request, 'inde.html')
