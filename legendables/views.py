@@ -9,7 +9,7 @@ from .auth import authrize_user
 import json
 import traceback
 import xlsxwriter
-from io import StringIO
+from io import StringIO as s_tio
 
 import pandas as pd
 
@@ -51,7 +51,7 @@ def inde(request):
 
         writer.save()
         excel = open("name_age.xlsx", "rb")
-        output = StringIO.StringIO(excel.read())
+        output = s_tio(excel.read())
         out_content = output.getvalue()
         output.close()
 
