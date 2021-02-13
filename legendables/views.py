@@ -8,6 +8,7 @@ import jwt
 from .auth import authrize_user
 import json
 import traceback
+import xlsxwriter
 
 import pandas as pd
 
