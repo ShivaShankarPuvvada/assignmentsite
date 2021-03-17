@@ -7,13 +7,15 @@
 <div class="contianer">
     <div class="jumbotron">
         <h4>Docs:</h4>
+        <p>Note: Positive and Negative testcases are provided for Create wishlist POST API. Test cases for remaining API's methods are similiar. (i,e. have to check all the possiblities and vulnerabilities)</p>
+        <p>Code for this assignment can be seen on: </p>
         <h5>API:</h5>
         <ul>
             <hr>
             <p>Wishlist</p>
             <li>Create: 
                 <ul>
-                    <li>url: <code>/port/wishlist/create</code></li>
+                    <li>url: <code>http://legendables.herokuapp.com/port/wishlist/create</code></li>
                     <li>Accepted methods:
                         <ul>
                             <li><code>GET</code>: Gets the list of all wishlists.</li>
@@ -25,7 +27,7 @@
             </li>
             <li>Update-delete:
                 <ul>
-                    <li>url: <code>/port/wishlists/1</code></li>
+                    <li>url: <code>http://legendables.herokuapp.com/port/wishlists/1</code></li>
                     <li>Accepted methods:
                         <ul>
                             <li><code>PUT</code>: Updates a wishlist by taking wishlist id.</li>
@@ -40,7 +42,7 @@
             <p>Container/Folder</p>
             <li>Create: 
                 <ul>
-                    <li>url: <code>/port/container/create</code></li>
+                    <li>url: <code>http://legendables.herokuapp.com/port/container/create</code></li>
                     <li>Accepted methods:
                         <ul>
                             <li><code>GET</code>: Gets the list of all containers.</li>
@@ -52,7 +54,7 @@
             </li>
             <li>Update-delete:
                 <ul>
-                    <li>url: <code>/port/containers/1</code></li>
+                    <li>url: <code>http://legendables.herokuapp.com/port/containers/1</code></li>
                     <li>Accepted methods:
                         <ul>
                             <li><code>PUT</code>: Updates a container by taking container id.</li>
@@ -67,7 +69,7 @@
             <p>Video/Movie</p>
             <li>Create: 
                 <ul>
-                    <li>url: <code>/port/movie/create</code></li>
+                    <li>url: <code>http://legendables.herokuapp.com/port/movie/create</code></li>
                     <li>Accepted methods:
                         <ul>
                             <li><code>GET</code>: Gets the list of all movies.</li>
@@ -79,7 +81,7 @@
             </li>
             <li>Update-delete:
                 <ul>
-                    <li>url: <code>/port/movies/1</code></li>
+                    <li>url: <code>http://legendables.herokuapp.com/port/movies/1</code></li>
                     <li>Accepted methods:
                         <ul>
                             <li><code>PUT</code>: Updates a movie by taking movie id.</li>
@@ -96,18 +98,18 @@
             <hr>
             <p>Firstly, create a wishlist</p>
             <li>Data: {"name": "sample wishlist name"}</li>
-            <li>Create Url: /port/wishlist/create</li>
-            <li>Update-delete Url: /port/wishlists/CREATED WISHLIST ID(ex: 1,2,3 etc.., )</li>
+            <li>Create Url: http://legendables.herokuapp.com/port/wishlist/create</li>
+            <li>Update-delete Url: http://legendables.herokuapp.com/port/wishlists/CREATED WISHLIST ID(ex: 1,2,3 etc.., )</li>
             <hr>
             <p>Secondly, create a folder</p>
             <li>Data: {"wishlist": CREATED WISHLIST ID(ex: 1,2,3 etc.., ), "name": "sample folder name"}</li>
-            <li>Create Url: /port/contianer/create</li>
-            <li>Update-delete Url: /port/containers/CREATED CONTAINER ID(ex: 1,2,3 etc.., )</li>
+            <li>Create Url: http://legendables.herokuapp.com/port/contianer/create</li>
+            <li>Update-delete Url: http://legendables.herokuapp.com/port/containers/CREATED CONTAINER ID(ex: 1,2,3 etc.., )</li>
             <hr>
             <p>Third, create a movie</p>
             <li>Data: {"wishlist": CREATED WISHLIST ID(ex: 1,2,3 etc.., ), "folder": CREATED CONTAINER ID(ex: 1,2,3 etc.., ), "title": "doctor who", "url": "https://www.google.com", "released_date": "2012-09-11"} (Note: Folder field is optional, it depends on if the video want to be saved in folder or not, if you want to save the video in the folder you have to send the folder/container id. if you dont want to save it in the folder and directly want to save in the wishlist then "folder" is not needed)</li>
-            <li>Create Url: /port/movie/create</li>
-            <li>Update-delete Url: /port/movies/CREATED MOVIE ID(ex: 1,2,3 etc.., )</li>
+            <li>Create Url: http://legendables.herokuapp.com/port/movie/create</li>
+            <li>Update-delete Url: http://legendables.herokuapp.com/port/movies/CREATED MOVIE ID(ex: 1,2,3 etc.., )</li>
         </ul>
     </div>
 </div>
