@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block main_content %}
+
+<div class="contianer">
+    <div class="jumbotron">
+        <h4>Docs:</h4>
+        <h5>API:</h5>
+        <ul>
+            <hr>
+            <p>Wishlist</p>
+            <li>Create: 
+                <ul>
+                    <li>url: <code>/port/wishlist/create</code></li>
+                    <li>Accepted methods:
+                        <ul>
+                            <li><code>GET</code>: Gets the list of all wishlists.</li>
+                            <li><code>POST</code>: Creates a wishlist.</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li>Update-delete:
+                <ul>
+                    <li>url: <code>/port/wishlists/1</code></li>
+                    <li>Accepted methods:
+                        <ul>
+                            <li><code>PUT</code>: Updates a wishlist by taking wishlist id.</li>
+                            <li><code>DELETE</code>: Deletes a wishlist by taking wishlist id.</li>
+                            <li><code>GET</code>: Gets the wishlist by taking wishlist id.</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <hr>
+            <p>Container/Folder</p>
+            <li>Create: 
+                <ul>
+                    <li>url: <code>/port/container/create</code></li>
+                    <li>Accepted methods:
+                        <ul>
+                            <li><code>GET</code>: Gets the list of all containers.</li>
+                            <li><code>POST</code>: Creates a container.</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li>Update-delete:
+                <ul>
+                    <li>url: <code>/port/containers/1</code></li>
+                    <li>Accepted methods:
+                        <ul>
+                            <li><code>PUT</code>: Updates a container by taking container id.</li>
+                            <li><code>DELETE</code>: Deletes a container by taking container id.</li>
+                            <li><code>GET</code>: Gets the container by taking container id.</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <hr>
+            <p>Video/Movie</p>
+            <li>Create: 
+                <ul>
+                    <li>url: <code>/port/movie/create</code></li>
+                    <li>Accepted methods:
+                        <ul>
+                            <li><code>GET</code>: Gets the list of all movies.</li>
+                            <li><code>POST</code>: Creates a movie.</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li>Update-delete:
+                <ul>
+                    <li>url: <code>/port/movies/1</code></li>
+                    <li>Accepted methods:
+                        <ul>
+                            <li><code>PUT</code>: Updates a movie by taking movie id.</li>
+                            <li><code>DELETE</code>: Deletes a movie by taking movie id.</li>
+                            <li><code>GET</code>: Gets the movie by taking movie id.</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+        <h5>How to:</h5>
+        <ul>
+            <hr>
+            <p>Firstly, create a wishlist</p>
+            <li>Data: {"name": "sample wishlist name"}</li>
+            <li>Create Url: /port/wishlist/create</li>
+            <li>Update-delete Url: /port/wishlists/CREATED WISHLIST ID(ex: 1,2,3 etc.., )</li>
+            <hr>
+            <p>Secondly, create a folder</p>
+            <li>Data: {"wishlist": CREATED WISHLIST ID(ex: 1,2,3 etc.., ), "name": "sample folder name"}</li>
+            <li>Create Url: /port/contianer/create</li>
+            <li>Update-delete Url: /port/containers/CREATED CONTAINER ID(ex: 1,2,3 etc.., )</li>
+            <hr>
+            <p>Third, create a movie</p>
+            <li>Data: {"wishlist": CREATED WISHLIST ID(ex: 1,2,3 etc.., ), "folder": CREATED CONTAINER ID(ex: 1,2,3 etc.., ), "title": "doctor who", "url": "https://www.google.com", "released_date": "2012-09-11"} (Note: Folder field is optional, it depends on if the video want to be saved in folder or not, if you want to save the video in the folder you have to send the folder/container id. if you dont want to save it in the folder and directly want to save in the wishlist then "folder" is not needed)</li>
+            <li>Create Url: /port/movie/create</li>
+            <li>Update-delete Url: /port/movies/CREATED MOVIE ID(ex: 1,2,3 etc.., )</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

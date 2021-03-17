@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'accounts',
-    'tasks'
+    'tasks',
+    'port',
 
 ]
 

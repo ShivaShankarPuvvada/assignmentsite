@@ -62,3 +62,6 @@ def inde(request):
         return response
 
     return render(request, 'inde.html')
+
+def runport(request):
+    return render(request, 'runport.html')
