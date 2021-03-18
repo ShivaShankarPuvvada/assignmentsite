@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load rest_framework %}
+
+
+{% block main_content %}
+<div class="container">
+    <div class="jumbotron">
+        <h3>All movies:</h3>
+        <ul>
+            {% for movie in movies %}
+            <div class="row">
+                <div class="col-4">
+                    <li>movie name: {{ movie.title }}
+                        <ul>
+                            <li>folder name: {{ movie.folder.name }}</li>
+                            <li>wishlist name: {{ movie.wishlist.name }}</li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="col-4">
+                    <a href="{% url 'port:update_delete_movie' movie_id=movie.id %}">
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" onclick="myFunction{{movie.id}}()">
+                        <i class="fa fa-trash danger" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <script>
+                function myFunction{{movie.id}}() {
+                    $.ajax({
+                        url: "{% url 'port:update_delete_movie' movie_id=movie.id %}",
+                        type: 'DELETE',
+                        success: function() { 
+                            console.log('DELETE completed');
+                        }
+                    });
+                }
+                </script>
+            {% endfor %}
+        </ul>
+        <p>Note: go to create movie (refresh the page) after deleting to see the reflected changes. Used ajax call for delete. PUT and DELETE methods can't be called directly by html form for REST.</p>
+
+        <hr>
+        <h3>Create movie:</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% render_form serializer %}
+            <input type="submit" value="Save" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

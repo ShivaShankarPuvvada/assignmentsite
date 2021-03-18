@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load rest_framework %}
+
+
+{% block main_content %}
+<div class="container">
+    <div class="jumbotron">
+        <h3>All wishlists:</h3>
+        <ul>
+            {% for wishlist in wishlists %}
+            <div class="row">
+                <div class="col-4">
+                    <li>{{ wishlist.name }}</li>
+                </div>
+                <div class="col-4">
+                    <a href="{% url 'port:update_delete_wishlist' wishlist_id=wishlist.id %}">
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" onclick="myFunction{{wishlist.id}}()">
+                        <i class="fa fa-trash danger" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <script>
+                function myFunction{{wishlist.id}}() {
+                    $.ajax({
+                        url: "{% url 'port:update_delete_wishlist' wishlist_id=wishlist.id %}",
+                        type: 'DELETE',
+                        success: function() { 
+                            console.log('DELETE completed');
+                        }
+                    });
+                }
+                </script>
+            {% endfor %}
+        </ul>
+        <p>Note: go to create wishlist (refresh the page) after deleting to see the reflected changes. Used ajax call for delete. PUT and DELETE methods can't be called directly by html form for REST.</p>
+
+        <hr>
+        <h3>Create wishlist:</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% render_form serializer %}
+            <input type="submit" value="Save" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
